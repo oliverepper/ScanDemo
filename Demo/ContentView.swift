@@ -6,11 +6,23 @@
 //
 
 import SwiftUI
+import OSLog
 
 struct ContentView: View {
+    @Environment(\.bluetoothManager) var manager
+
     var body: some View {
-        Text("Hello, world!")
+        Text("Demo")
             .padding()
+            .task {
+                for await state in manager.state() {
+                    if state == .poweredOn { break }
+                }
+                os_log("Bluetooth ready")
+                for await scanData in manager.scanForPeripherals() {
+                    print(scanData)
+                }
+            }
     }
 }
 

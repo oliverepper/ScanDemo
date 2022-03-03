@@ -11,6 +11,9 @@
 		A7FE151827D0A12B00DF3D6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE151727D0A12B00DF3D6F /* ContentView.swift */; };
 		A7FE151A27D0A12B00DF3D6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7FE151927D0A12B00DF3D6F /* Assets.xcassets */; };
 		A7FE151D27D0A12B00DF3D6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7FE151C27D0A12B00DF3D6F /* Preview Assets.xcassets */; };
+		A7FE152627D0A13D00DF3D6F /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE152427D0A13D00DF3D6F /* BluetoothManager.swift */; };
+		A7FE152727D0A13D00DF3D6F /* PeripheralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE152527D0A13D00DF3D6F /* PeripheralController.swift */; };
+		A7FE152927D0A2A800DF3D6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE152827D0A2A800DF3D6F /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,10 @@
 		A7FE151927D0A12B00DF3D6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7FE151C27D0A12B00DF3D6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A7FE151E27D0A12B00DF3D6F /* Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Demo.entitlements; sourceTree = "<group>"; };
+		A7FE152427D0A13D00DF3D6F /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		A7FE152527D0A13D00DF3D6F /* PeripheralController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralController.swift; sourceTree = "<group>"; };
+		A7FE152827D0A2A800DF3D6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A7FE152A27D0A3F300DF3D6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +59,11 @@
 		A7FE151427D0A12B00DF3D6F /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				A7FE152A27D0A3F300DF3D6F /* Info.plist */,
+				A7FE152427D0A13D00DF3D6F /* BluetoothManager.swift */,
+				A7FE152527D0A13D00DF3D6F /* PeripheralController.swift */,
 				A7FE151527D0A12B00DF3D6F /* DemoApp.swift */,
+				A7FE152827D0A2A800DF3D6F /* AppDelegate.swift */,
 				A7FE151727D0A12B00DF3D6F /* ContentView.swift */,
 				A7FE151927D0A12B00DF3D6F /* Assets.xcassets */,
 				A7FE151E27D0A12B00DF3D6F /* Demo.entitlements */,
@@ -140,6 +151,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7FE151827D0A12B00DF3D6F /* ContentView.swift in Sources */,
+				A7FE152727D0A13D00DF3D6F /* PeripheralController.swift in Sources */,
+				A7FE152627D0A13D00DF3D6F /* BluetoothManager.swift in Sources */,
+				A7FE152927D0A2A800DF3D6F /* AppDelegate.swift in Sources */,
 				A7FE151627D0A12B00DF3D6F /* DemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +290,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Demo/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app requires Bluetooth access";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -303,6 +319,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Demo/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app requires Bluetooth access";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
