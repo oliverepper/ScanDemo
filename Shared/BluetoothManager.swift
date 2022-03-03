@@ -9,7 +9,7 @@ import Foundation
 import CoreBluetooth
 
 
-final class BluetoothManager: NSObject {
+public final class BluetoothManager: NSObject {
     typealias DiscoverData = (CBPeripheral, [String: Any], NSNumber)
 
     private var manager: CBCentralManager?
@@ -18,7 +18,11 @@ final class BluetoothManager: NSObject {
     private var discoveredPeripheralsContinuation: AsyncStream<DiscoverData>.Continuation?
     private var connectPeripheralContinuation: CheckedContinuation<PeripheralController, Error>?
 
-    func state() -> AsyncStream<CBManagerState> {
+    var state: CBManagerState {
+        manager?.state ?? .unknown
+    }
+
+    func states() -> AsyncStream<CBManagerState> {
         return AsyncStream<CBManagerState> {
             stateContinuation = $0
             manager = CBCentralManager(delegate: self, queue: nil)
@@ -51,23 +55,23 @@ final class BluetoothManager: NSObject {
 }
 
 extension BluetoothManager: CBCentralManagerDelegate {
-    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+    public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         stateContinuation?.yield(central.state)
     }
 
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+    public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         print(".", terminator: "")
         discoveredPeripheralsContinuation?.yield((peripheral, advertisementData, RSSI))
     }
 
-    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+    public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         if let error = error {
             connectPeripheralContinuation?.resume(throwing: error)
         }
         fatalError("didFailToConnect called without error")
     }
 
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+    public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         connectPeripheralContinuation?.resume(with: .success(PeripheralController(peripheral: peripheral)))
     }
 }
