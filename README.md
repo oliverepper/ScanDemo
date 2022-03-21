@@ -1,3 +1,5 @@
+**Started working with the most recent release of macOS**
+
 This repo demonstrates a problem I have with CoreBluetooth peripheral scanning under Monterey. If your start the Demo app you can observe ongoing scanning via the Console output. This is started from the `.task` modifier (ContentView). You can hit the stop button and start scanning again via the start button.
 
 ## 1st Problem
